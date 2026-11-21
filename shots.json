@@ -1,0 +1,6 @@
+[
+  { "name": "1-harbor-overview.jpg", "query": "?shot=overview&seed=1" },
+  { "name": "2-downtown-drive.jpg", "query": "?shot=drive&seed=1" },
+  { "name": "3-courier-run.jpg", "query": "?shot=mission&seed=1" },
+  { "name": "4-night-patrol.jpg", "query": "?shot=night&seed=1" }
+]
