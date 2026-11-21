@@ -1,53 +1,70 @@
 # Neon Harbor
 
-An original coastal crime story built for the make.fun gta6-01 competition. Drive sun-faded boulevards, thread the Old Town lanes, and make a name for yourself after dark. Eight story contracts, five vehicle classes, patrol pursuits, stunt ramps, glowing harbor caches, fares, shops and a four-district city live in the browser. Progress and upgrades save locally.
+Neon Harbor is an original coastal crime adventure for the make.fun gta6-01 competition. Take on eight connected contracts, borrow a ride, evade patrols, and explore four neighborhoods: Downtown, Old Town, the Docks, and the Beachfront. Five vehicle classes, traffic, pedestrians, fares, caches, and stunt ramps keep the streets busy between jobs.
 
 [![Make.fun — gta6-01](https://make.fun/badge/gta6-01.svg)](https://make.fun/bounty/gta6-01)
 [![Neon Harbor rank](https://make.fun/badge/gta6-01/Jsmile19/neon-harbor/rank.svg)](https://make.fun/bounty/gta6-01)
 [![Neon Harbor reward](https://make.fun/badge/gta6-01/Jsmile19/neon-harbor/reward.svg)](https://make.fun/bounty/gta6-01)
 
-Neon Harbor uses an original 2D canvas city renderer and synthesized WebAudio. It has no dependencies, asset downloads, or build step.
+The game uses a Canvas 2D renderer and synthesizes its music and effects with WebAudio. All runtime files live in `game/`. No dependency installation, compilation, remote assets, or internet connection is needed when playing through a local static server.
 
-## Play
+## Launch
 
-Run `node serve.ts` from the repository root and open <http://localhost:8080> in desktop Chrome. Any static server can serve `game/`. Once served locally, the game works without an internet connection and makes no external network requests.
+Use Node 22 or newer from the repository root:
 
-## Story runs
+```sh
+node serve.ts
+```
 
-1. **First Wheels** — take a coupe to the marina overlook.
-2. **Courier Run** — deliver three parcels against the clock.
-3. **Getaway Driver** — collect Nia, then shake the patrol tail.
-4. **Dockside Deal** — retrieve a package under the crane.
-5. **Night Chase** — clear a three-star pursuit across the city.
-6. **The Exchange** — deliver fragile cargo without a hard collision.
-7. **Harbor Heist** — take a Vesper GT from the guarded lot and bring it to the pier.
-8. **King of the Harbor** — the final high-heat run across the city.
+Open <http://localhost:8080> in desktop Chrome. Alternatively, serve `game/` with any static web server. Enter begins the story or continues a local save; H opens the guide. N on the title screen clears the save for a fresh start.
 
 ## Controls
 
-- **W / A / S / D** or **arrow keys** — walk; accelerate, steer and brake/reverse while driving
-- **E** — enter/exit a nearby vehicle; interact with a shop on foot
-- **Space** — handbrake / drift; jump on foot
-- **Shift** — sprint
-- **Mouse drag** — look around the player
-- **R** — recover player and vehicle to the nearest junction
-- **Esc** — pause/resume
-- **M** — mute/unmute synthesized audio
-- **Enter** — start, continue, next contract, or retry
-- **H** — controls and city guide
-- **N** on the title screen — clear the local save for a fresh story
+| Key or gesture | Use |
+| --- | --- |
+| WASD / arrows | Walk; accelerate, steer, brake, and reverse in a vehicle |
+| E | Enter or leave a nearby vehicle; interact with services on foot |
+| Space | Handbrake and drift in a vehicle; jump on foot |
+| Shift | Sprint on foot |
+| Mouse drag | Look around the player |
+| R | Recover the player and vehicle to the nearest junction |
+| Esc | Pause, resume, or leave a result screen for free roam |
+| M | Mute or restore audio |
+| Enter | Start, continue, retry, or begin the next contract |
+| H | Show or close the controls and city guide |
+| N on the title | Remove saved progress |
 
-Earn cash on contracts, fares, and stunt jumps; harbor caches are worth $250 each. Visit the dealership, garage, or clinic to buy a ride, tune up, or restore health. Vehicle classes have their own pace and handling.
+## The story
 
+1. **First Wheels:** drive the sedan to the marina overlook.
+2. **Courier Run:** finish three deliveries before the deadline.
+3. **Getaway Driver:** pick up Nia and shake her pursuers.
+4. **Dockside Deal:** collect the crane-side package on foot, then drive to safety.
+5. **Night Chase:** reach the west gate and escape a three-star search.
+6. **The Exchange:** deliver fragile cargo on time without a hard impact.
+7. **Harbor Heist:** steal the guarded red Vesper GT and deliver that vehicle to the pier.
+8. **King of the Harbor:** clear the checkpoint, make the harbor drop, and escape the final pursuit.
 
-## City guide
+Gold beacons, an arrow, and the minimap route point toward your current objective. Slow down for parcel stops and passenger pickups. Escape stages finish after the wanted stars clear. Enter retries a failed contract. The city remains open after the final job.
 
-The gold beacon, compass arrow, and minimap route guide the active contract. Slow down at courier stops and for passengers. Dockside Deal requires collecting the package on foot. Harbor Heist requires the marked Vesper, rather than any sports car. Escape stages end only after the wanted stars clear. Hard crashes break the Exchange cargo; failed contracts can be retried with Enter. After the eighth contract, continue exploring freely.
+## Life around the harbor
 
-Cyan caches pay $250 each. Taxi passengers use amber FARE markers; stop a taxi at the pickup and destination to earn $400. Five east-facing ramps award $300 and 250 style points on the first successful landing. Police respond to theft, collisions and speed traps, pursue and ram, and set roadblocks at five stars. Outrun patrols or hide behind blocks to cool the search.
+Collect twenty cyan caches for $250 each. Stop a taxi at the amber FARE marker, carry its passenger to the destination, and earn $400. Approach the five east-facing ramps at speed: each first successful landing pays $300 and awards 250 style points. Fast handbrake slides also increase style.
 
-Service stops are marked on the map: **H** restores health, **G** installs $450 upgrades (three engine levels, then brakes, then armor), and **$** sells the next unowned vehicle. Purchases spawn outside the dealership and return on reload. Engine, brakes, and armor affect handling and damage. Mission unlocks, cash, owned models, upgrades, collected caches, stunt rewards, style, city time, and mute settings save locally; an interrupted contract restarts on Continue.
+Vehicle theft, collisions, and speed traps attract police. Patrols pursue and ram; five wanted stars bring roadblocks. Put distance or buildings between yourself and the patrol to let the search cool down.
 
-## Verification
+On the map, **H** marks the free clinic, **G** the garage, and **$** the dealership. Use these services on foot. The garage installs $450 upgrades in order: three engine levels, three brake levels, then three armor levels. The dealership sells the next unowned model and parks purchases outside; owned purchases return after a reload. Vehicle classes have distinct speed and handling, and upgrades affect acceleration, braking, and crash damage.
 
-`node main.ts` copies the game and captures to `/output` and writes the dossier with the unmodified kit library. For a restricted local environment, use `MAKEFUN_OUTPUT_DIR=/tmp/neon-harbor-output node main.ts`. No compilation or dependency installation is required. The four supplied screenshots are retained as requested.
+## Saved progress
+
+Browser local storage keeps contract unlocks, cash, owned models, upgrades, cache collection, completed stunts, style, city time, and mute settings. An interrupted contract restarts when you continue. Saves stay on the current browser and origin.
+
+## Hand-in
+
+`node main.ts` copies `game/` and the four existing screenshots to `/output`, then writes `dossier.json` with the unchanged make.fun kit library. A writable local destination can be selected explicitly:
+
+```sh
+MAKEFUN_OUTPUT_DIR=/tmp/neon-harbor-output3 node main.ts
+```
+
+Packaging preserves the existing screenshot files. It does not capture or regenerate them.
